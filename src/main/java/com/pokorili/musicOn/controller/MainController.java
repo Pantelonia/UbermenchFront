@@ -58,7 +58,7 @@ public class MainController {
                 model.addAttribute("title", title);
                 model.addAttribute("searchList", soundtrackList);
                 break;
-        }
+        }  
 
         return "searchPage";
     }
