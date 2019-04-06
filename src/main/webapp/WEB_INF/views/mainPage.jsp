@@ -1,3 +1,4 @@
+<%--@elvariable id="soundtrackTitle" type="java.lang.String"--%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@page contentType="text/html;charset=UTF-8"%>
 <html>
@@ -26,6 +27,7 @@
             display: inline-block;
             margin: 30px;
         }
+
     </style>
 </head>
 
@@ -35,8 +37,9 @@
         <h1>MusicOn</h1>
     </div>
     <div class="searchInput">
-            <form method="post" action="/search">
-                <input type="text" name="title"/>
+            <form method="get" action="/search">
+                <input type="text" name="title" value="${soundtrackTitle}"/>
+                <input type="hidden" name="searchtype" value="soundtrackByTitle">
                 <input type="submit" value="Find"/>
             </form>
     </div>
