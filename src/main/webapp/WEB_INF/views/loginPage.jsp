@@ -15,6 +15,9 @@
         .inputField {
             margin: 20px;
         }
+        .red {
+            color:red;
+        }
     </style>
 </head>
 
@@ -22,23 +25,26 @@
 <%@include file="header.jsp"%>
 <div class="login-form" align="center">
     <%--@elvariable id="user" type="com.pokorili.musicOn.entity.Visitor"--%>
-    <form method="post" action="/">
+    <form:form method="post" action="/login" modelAttribute="user">
         <div class="inputField">
             <label>
                 Login
-                <input type="text" name="nickname"/>
+                <form:input type="text" path="nickname"/>
             </label>
         </div>
         <div class="inputField">
             <label>
                 Password
-                <input type="password" name="password"/>
+                <form:input type="password" path="password"/>
             </label>
+        </div>
+        <div class="inputField">
+            <p class="red">${errMessage}</p>
         </div>
         <div class="inputField">
             <input type="submit" value="Login">
         </div>
-    </form>
+    </form:form>
 </div>
 </body>
 

@@ -1,3 +1,4 @@
+<%@ page import="com.pokorili.musicOn.entity.Visitor" %>
 <style>
     * {
         padding: 0;
@@ -25,13 +26,10 @@
     .inline-block {
         display: inline-block;
     }
-    .login {
+    .right-block div {
         margin: 0 20px;
     }
-    .register {
-        margin: 0 20px;
-    }
-    .authotisation-block {
+    .right-block {
         float: right;
         margin: 40px;
     }
@@ -47,7 +45,11 @@
             <input type="submit" value="Find"/>
         </form>
     </div>
-    <div class="authotisation-block inline-block">
+    <%
+        Visitor user = (Visitor) session.getAttribute("user");
+        if (user.getStatus().equals("UnAuth")) {
+    %>
+    <div class="right-block inline-block">
         <div class="login inline-block">
             <a href="/login">Login</a>
         </div>
@@ -55,4 +57,18 @@
             <a href="/register">Register</a>
         </div>
     </div>
+    <%
+        } else {
+    %>
+    <div class="right-block inline-block">
+        <div class="inline-block">
+            <a href="/profile"><%=user.getNickname()%></a>
+        </div>
+        <div class="inline-block">
+            <a href="/logout">Logout</a>
+        </div>
+    </div>
+    <%
+        }
+    %>
 </div>

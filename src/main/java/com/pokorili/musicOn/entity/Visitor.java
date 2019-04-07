@@ -50,6 +50,10 @@ public class  Visitor {
         this.email = email;
     }
 
+    public Visitor(String status) {
+        this.status = status;
+    }
+
     public Long getId() {
         return id;
     }
