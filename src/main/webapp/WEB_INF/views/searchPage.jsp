@@ -117,8 +117,6 @@
         </div>
 
         <div class="searchResults">
-            <%--@elvariable id="soundtrackList" type="java.util.ArrayList<com.pokorili.musicOn.entity.Soundtrack>"--%>
-
 
             <% if (request.getAttribute("searchtype") != "playlist") {%>
 
