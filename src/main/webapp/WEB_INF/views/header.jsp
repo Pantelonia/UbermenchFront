@@ -41,8 +41,9 @@
         <h1><a href="/">MusicOn</a></h1>
     </div>
     <div class="searchInput inline-block">
-        <form method="post" action="/search">
-            <input type="text" name="title"/>
+        <form method="get" action="/search">
+            <input type="text" name="title" value="${title}"/>
+            <input type="hidden" name="searchtype" value="soundtrackByTitle">
             <input type="submit" value="Find"/>
         </form>
     </div>

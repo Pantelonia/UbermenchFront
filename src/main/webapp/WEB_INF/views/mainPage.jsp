@@ -1,4 +1,4 @@
-<%@ page import="java.util.Enumeration" %><%--@elvariable id="user" type="com.pokorili.musicOn.entity.Visitor"--%>
+<%--@elvariable id="soundtrackTitle" type="java.lang.String"--%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html;charset=UTF-8"%>

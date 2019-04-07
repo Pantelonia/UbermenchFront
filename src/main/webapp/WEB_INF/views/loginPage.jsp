@@ -22,23 +22,23 @@
 <%@include file="header.jsp"%>
 <div class="login-form" align="center">
     <%--@elvariable id="user" type="com.pokorili.musicOn.entity.Visitor"--%>
-    <form:form method="post" action="/" modelAttribute="user">
+    <form method="post" action="/">
         <div class="inputField">
             <label>
                 Login
-                <form:input type="text" path="nickname"/>
+                <input type="text" name="nickname"/>
             </label>
         </div>
         <div class="inputField">
             <label>
                 Password
-                <form:input type="password" path="password"/>
+                <input type="password" name="password"/>
             </label>
         </div>
         <div class="inputField">
             <input type="submit" value="Login">
         </div>
-    </form:form>
+    </form>
 </div>
 </body>
 
