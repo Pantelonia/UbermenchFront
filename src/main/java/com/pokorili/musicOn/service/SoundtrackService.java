@@ -1,18 +1,11 @@
 package com.pokorili.musicOn.service;
 
 import com.google.gson.Gson;
-import com.pokorili.musicOn.entity.Genre;
 import com.pokorili.musicOn.entity.Soundtrack;
-import com.pokorili.musicOn.entity.Visitor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
-import java.lang.reflect.Type;
-import java.net.URLDecoder;
-import java.net.URLEncoder;
-import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
