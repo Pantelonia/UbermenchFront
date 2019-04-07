@@ -15,25 +15,10 @@ public class SoundtrackService {
     ConnectionService connectionService;
 
 
-    public Soundtrack[] getSoundtracksByTitle(String title) {
+    public Soundtrack[] getSoundtracksBy(String searchtype, String variable) {
         Soundtrack[] soundtracks;
         Map<String, String> params = new HashMap<>();
-        params.put("title", title);
-        Gson gson = new Gson();
-        try {
-            String link = "http://localhost:8080/soundtrack";
-            soundtracks = gson.fromJson(connectionService.sendRequest(link,"GET", params, null), Soundtrack[].class);
-        } catch (IOException e) {
-            e.printStackTrace();
-            soundtracks = new Soundtrack[0];
-        }
-        return soundtracks;
-    }
-
-    public Soundtrack[] getSoundtracksByAuthor(String author) {
-        Soundtrack[] soundtracks;
-        Map<String, String> params = new HashMap<>();
-        params.put("author", author);
+        params.put(searchtype, variable);
         Gson gson = new Gson();
         try {
             String link = "http://localhost:8080/soundtrack";

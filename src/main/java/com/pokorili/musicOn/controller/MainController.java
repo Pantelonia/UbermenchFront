@@ -39,13 +39,13 @@ public class MainController {
                 model.addAttribute("title", title);
                 break;
             case "soundtrackByTitle":
-                Soundtrack[] soundtrackList = soundtrackService.getSoundtracksByTitle(title);
+                Soundtrack[] soundtrackList = soundtrackService.getSoundtracksBy("title", title);
                 model.addAttribute("searchtype", "soundtrackByTitle");
                 model.addAttribute("title", title);
                 model.addAttribute("searchList", soundtrackList);
                 break;
             case "soundtrackByAuthor":
-                soundtrackList = soundtrackService.getSoundtracksByAuthor(title);
+                soundtrackList = soundtrackService.getSoundtracksBy("author", title);
                 model.addAttribute("searchtype", "soundtrackByAuthor");
                 model.addAttribute("title", title);
                 model.addAttribute("searchList", soundtrackList);
