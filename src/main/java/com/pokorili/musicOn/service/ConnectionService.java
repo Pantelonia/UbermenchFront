@@ -12,9 +12,15 @@ import org.springframework.stereotype.Service;
 @Service
 public class ConnectionService {
     public String sendRequest(String link, String method, Map<String, String> params, Object requestBody) throws IOException {
-        URL url = new URL(link + "?" + getParamsString(params));
+        URL url;
+        if (params == null) {
+            url = new URL(link);
+        } else {
+            url = new URL(link + "?" + getParamsString(params));
+        }
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
         connection.setRequestMethod(method);
+        connection.addRequestProperty("Content-type", "application/json");
 
         Gson gson = new Gson();
         if (requestBody != null) {

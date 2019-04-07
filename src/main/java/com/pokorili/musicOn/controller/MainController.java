@@ -32,6 +32,10 @@ public class MainController {
     public Visitor createVisitor() {
         return new Visitor("UnAuth");
     }
+    @ModelAttribute("newUser")
+    public Visitor createNewVisitor() {
+        return new Visitor("UnAuth");
+    }
 
     @GetMapping("/")
     public String getMainPage(Model model) {
@@ -100,6 +104,30 @@ public class MainController {
     @GetMapping("/register")
     public String getRegisterPage(Model model) {
         return "registerPage";
+    }
+
+    @PostMapping("/register")
+    public String registerNewUser(@ModelAttribute("newUser") Visitor newUser, @SessionAttribute("user")Visitor user, Model model) {
+        Visitor searchEmailVisitor = userService.getVisitorByEmail(newUser.getEmail());
+        Visitor searchNicknameVisitor = userService.getVisitorByNickname(newUser.getNickname());
+        if (searchEmailVisitor == null && searchNicknameVisitor == null) {
+            newUser.setStatus("Registered");
+            newUser = userService.addVisitor(newUser);
+            user.setId(newUser.getId());
+            user.setNickname(newUser.getNickname());
+            user.setEmail(newUser.getEmail());
+            user.setStatus(newUser.getStatus());
+            user.setPassword(newUser.getPassword());
+            return "mainPage";
+        } else {
+            if (searchEmailVisitor != null) {
+                model.addAttribute("errMessage", "This email is already registered");
+                return "registerPage";
+            } else {
+                model.addAttribute("errMessage", "This nickname is already registered");
+                return "registerPage";
+            }
+        }
     }
 
     @GetMapping("/profile")
