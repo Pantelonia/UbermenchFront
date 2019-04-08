@@ -24,12 +24,12 @@
 <body>
 <%@include file="header.jsp"%>
 <div class="login-form" align="center">
-    <%--@elvariable id="user" type="com.pokorili.musicOn.entity.Visitor"--%>
+    <%--@elvariable id="user" type="com.pokorili.musicOn.entity.Users"--%>
     <form:form method="post" action="/login" modelAttribute="user">
         <div class="inputField">
             <label>
                 Login
-                <form:input type="text" path="nickname"/>
+                <form:input type="text" path="login"/>
             </label>
         </div>
         <div class="inputField">

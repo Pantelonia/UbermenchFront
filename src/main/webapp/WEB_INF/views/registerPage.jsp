@@ -36,7 +36,7 @@
         <div class="inputField">
             <label>
                 Nickname
-                <form:input type="text" path="nickname"/>
+                <form:input type="text" path="login"/>
             </label>
         </div>
         <div class="inputField">

@@ -5,7 +5,7 @@
 <html>
 
 <head>
-    <title>MusicOn</title>
+    <title>Svetetcom</title>
     <meta charset="UTF-8"/>
 </head>
 

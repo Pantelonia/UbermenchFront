@@ -1,6 +1,7 @@
 package com.pokorili.musicOn.controller;
 
-import com.pokorili.musicOn.entity.Visitor;
+import com.pokorili.musicOn.entity.Users;
+import com.pokorili.musicOn.service.ParametrService;
 import com.pokorili.musicOn.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,14 +14,18 @@ public class ProfileController {
 
     @Autowired
     UserService userService;
+    @Autowired
+    ParametrService parametrService;
 
     @ModelAttribute("newUser")
-    public Visitor createNewVisitor() {
-        return new Visitor();
+    public Users createNewVisitor() {
+        return new Users();
     }
 
     @GetMapping("/profile")
-    public String getProfilePage() {
+    public String getProfilePage(Model model, @SessionAttribute("user") Users users) {
+        model.addAttribute("parametrs", parametrService.getLast(users.getId()));
+
         return "profilePage";
     }
 
@@ -31,37 +36,37 @@ public class ProfileController {
     }
 
     @PostMapping("/changeEmail")
-    public String changeEmail(@SessionAttribute("user")Visitor curUser, @ModelAttribute("newUser")Visitor newUser, Model model) {
-        Visitor checkVisitor = userService.getVisitorByEmail(newUser.getEmail());
+    public String changeEmail(@SessionAttribute("user")Users curUser, @ModelAttribute("newUser")Users newUser, Model model) {
+        Users checkVisitor = userService.getUserByEmail(newUser.getEmail());
         if (checkVisitor != null) {
             model.addAttribute("errMessage", "This email is already registered");
             model.addAttribute("setting", "email");
             return "changeProfileSettingsPage";
         } else {
             curUser.setEmail(newUser.getEmail());
-            userService.changeVisitorProperty(curUser.getId(), "email", newUser.getEmail());
+            userService.changeUserProperty(curUser.getId(), "email", newUser.getEmail());
             model.addAttribute("infoMessage", "Email successfully changed!");
             return "profilePage";
         }
     }
 
-    @GetMapping("/changeNickname")
-    public String getChangeNicknamePage(Model model) {
-        model.addAttribute("setting", "nickname");
+    @GetMapping("/changeLogin")
+    public String getChangeLoginPage(Model model) {
+        model.addAttribute("setting", "login");
         return "changeProfileSettingsPage";
     }
 
-    @PostMapping("/changeNickname")
-    public String changeNickname(@SessionAttribute("user")Visitor curUser, @ModelAttribute("newUser")Visitor newUser, Model model) {
-        Visitor checkVisitor = userService.getVisitorByNickname(newUser.getNickname());
+    @PostMapping("/changeLogin")
+    public String changeLogin(@SessionAttribute("user")Users curUser, @ModelAttribute("newUser")Users newUser, Model model) {
+        Users checkVisitor = userService.getUserByLogin(newUser.getLogin());
         if (checkVisitor != null) {
-            model.addAttribute("errMessage", "This nickname is already registered");
-            model.addAttribute("setting", "nickname");
+            model.addAttribute("errMessage", "This login is already registered");
+            model.addAttribute("setting", "login");
             return "changeProfileSettingsPage";
         } else {
-            curUser.setNickname(newUser.getNickname());
-            userService.changeVisitorProperty(curUser.getId(), "nickname", newUser.getNickname());
-            model.addAttribute("infoMessage", "Nickname successfully changed!");
+            curUser.setLogin(newUser.getLogin());
+            userService.changeUserProperty(curUser.getId(), "login", newUser.getLogin());
+            model.addAttribute("infoMessage", "Login successfully changed!");
             return "profilePage";
         }
     }
@@ -73,11 +78,11 @@ public class ProfileController {
     }
 
     @PostMapping("/changePassword")
-    public String changePassword(@SessionAttribute("user")Visitor curUser, @ModelAttribute("newUser")Visitor newUser, Model model) {
+    public String changePassword(@SessionAttribute("user")Users curUser, @ModelAttribute("newUser")Users newUser, Model model) {
         if (curUser.getPassword().equals(newUser.getEmail())) {
-            if (newUser.getNickname().equals(newUser.getPassword())) {
+            if (newUser.getLogin().equals(newUser.getPassword())) {
                 curUser.setPassword(newUser.getPassword());
-                userService.changeVisitorProperty(curUser.getId(), "password", newUser.getPassword());
+                userService.changeUserProperty(curUser.getId(), "password", newUser.getPassword());
                 model.addAttribute("infoMessage", "Password successfully changed!");
                 return "profilePage";
             } else {
@@ -91,4 +96,5 @@ public class ProfileController {
             return "changeProfileSettingsPage";
         }
     }
+
 }

@@ -48,21 +48,21 @@
     </form:form>
         <%
                 } else {
-            if (setting.equals("nickname")) {
+            if (setting.equals("login")) {
                 %>
-    <form:form method="post" action="/changeNickname" modelAttribute="newUser">
+    <form:form method="post" action="/changeLogin" modelAttribute="newUser">
 
         <div class="inputField">
             <label>
-                Nickname
-                <form:input type="text" path="nickname"/>
+                Login
+                <form:input type="text" path="login"/>
             </label>
         </div>
         <div class="inputField">
             <p class = "red">${errMessage}</p>
         </div>
         <div class="inputField">
-            <input type="submit" value="Change nickname">
+            <input type="submit" value="Change login">
         </div>
     </form:form>
     <%
@@ -82,7 +82,7 @@
         <div class="inputField">
             <label>
                 New password
-                <form:input type="password" path="nickname"/>
+                <form:input type="password" path="login"/>
             </label>
         </div>
         <div class="inputField">

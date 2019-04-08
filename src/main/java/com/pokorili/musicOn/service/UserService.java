@@ -1,8 +1,9 @@
 package com.pokorili.musicOn.service;
 
 import com.google.gson.Gson;
-import com.pokorili.musicOn.entity.Soundtrack;
-import com.pokorili.musicOn.entity.Visitor;
+
+import com.pokorili.musicOn.entity.Users;
+import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,60 +16,66 @@ public class UserService {
     @Autowired
     ConnectionService connectionService;
 
-    public Visitor getVisitorByNickname(String nickname) {
-        Visitor visitor;
+    public Users getUserByLogin(String login) {
+        Users user;
         Map<String, String> params = new HashMap<>();
-        params.put("nickname", nickname);
+        params.put("login", login);
         Gson gson = new Gson();
         try {
-            String link = "http://localhost:8080/visitors";
-            visitor = gson.fromJson(connectionService.sendRequest(link,"GET", params, null), Visitor.class);
+            String link = "http://localhost:8080/users/";
+            user = gson.fromJson(connectionService.sendRequest(link,"GET", params, null), Users.class);
         } catch (IOException e) {
             e.printStackTrace();
-            visitor = null;
+            user = null;
         }
 
-        return visitor;
+        return user;
     }
 
-    public Visitor getVisitorByEmail(String email) {
-        Visitor visitor;
+    public  Users getUserByEmail(String email){
+        Users user;
         Map<String, String> params = new HashMap<>();
         params.put("email", email);
         Gson gson = new Gson();
         try {
-            String link = "http://localhost:8080/visitors";
-            visitor = gson.fromJson(connectionService.sendRequest(link,"GET", params, null), Visitor.class);
+            String link = "http://localhost:8080/users/";
+            user = gson.fromJson(connectionService.sendRequest(link,"GET", params, null), Users.class);
         } catch (IOException e) {
             e.printStackTrace();
-            visitor = null;
+            user = null;
         }
-        return visitor;
-    }
-    public Visitor addVisitor(Visitor visitor) {
-        Gson gson = new Gson();
-        try {
-            String link = "http://localhost:8080/visitors";
-            visitor = gson.fromJson(connectionService.sendRequest(link,"POST", null, visitor), Visitor.class);
-        } catch (IOException e) {
-            e.printStackTrace();
-            visitor = null;
-        }
-        return visitor;
+
+        return user;
     }
 
-    public Visitor changeVisitorProperty(Long id, String property, String value) {
-        Visitor visitor;
+
+    public Users addVisitor(Users user) {
+        Gson gson = new Gson();
+        try {
+            String link = "http://localhost:8080/users";
+            user = gson.fromJson(connectionService.sendRequest(link,"POST", null, user), Users.class);
+        } catch (IOException e) {
+            e.printStackTrace();
+            user = null;
+        }
+        return user;
+    }
+
+
+    public Users changeUserProperty(Long id, String property, String value) {
+        Users users;
         Map<String, String> params = new HashMap<>();
         params.put(property, value);
         Gson gson = new Gson();
         try {
-            String link = "http://localhost:8080/visitors" + "/" + id;
-            visitor = gson.fromJson(connectionService.sendRequest(link,"POST", params, null), Visitor.class);
+            String link = "http://localhost:8080/users" + "/" + id;
+            users = gson.fromJson(connectionService.sendRequest(link,"POST", params, null), Users.class);
         } catch (IOException e) {
             e.printStackTrace();
-            visitor = null;
+            users = null;
         }
-        return visitor;
+        return users;
     }
+
+
 }

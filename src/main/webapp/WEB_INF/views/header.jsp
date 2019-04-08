@@ -1,4 +1,4 @@
-<%@ page import="com.pokorili.musicOn.entity.Visitor" %>
+<%@ page import="com.pokorili.musicOn.entity.Users" %>
 <style>
     * {
         padding: 0;
@@ -25,6 +25,8 @@
     }
     .inline-block {
         display: inline-block;
+
+
     }
     .right-block div {
         margin: 0 20px;
@@ -36,18 +38,18 @@
 </style>
 <div class = "header">
     <div class="icon inline-block">
-        <h1><a href="/">MusicOn</a></h1>
+        <h1><a href="/">Ubermensch</a></h1>
     </div>
-    <div class="searchInput inline-block">
-        <form method="get" action="/search">
-            <input type="text" name="title" value="${title}"/>
-            <input type="hidden" name="searchtype" value="soundtrackByTitle">
-            <input type="submit" value="Find"/>
-        </form>
-    </div>
+    <%--<div class="searchInput inline-block">--%>
+        <%--<form method="get" action="/search">--%>
+            <%--<input type="text" name="title" value="${title}"/>--%>
+            <%--<input type="hidden" name="searchtype" value="soundtrackByTitle">--%>
+            <%--<input type="submit" value="Find"/>--%>
+        <%--</form>--%>
+    <%--</div>--%>
     <%
-        Visitor user = (Visitor) session.getAttribute("user");
-        if (user.getStatus().equals("UnAuth")) {
+        Users user = (Users) session.getAttribute("user");
+        if (user.getEmail() == null) {
     %>
     <div class="right-block inline-block">
         <div class="login inline-block">
@@ -62,10 +64,13 @@
     %>
     <div class="right-block inline-block">
         <div class="inline-block">
-            <a href="/profile"><%=user.getNickname()%></a>
+            <a href="/profile"><%=user.getLogin()%></a>
         </div>
         <div class="inline-block">
             <a href="/logout">Logout</a>
+        </div>
+        <div class="inline-block">
+            <a href="/dish">My programm</a>
         </div>
     </div>
     <%

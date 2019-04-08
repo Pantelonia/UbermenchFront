@@ -1,7 +1,7 @@
 package com.pokorili.musicOn.entity;
 
 import java.sql.Date;
-
+import java.sql.Timestamp;
 
 
 public class Parametrs {
@@ -9,7 +9,7 @@ public class Parametrs {
     private long id;
 
 
-    private Date date;
+    private Timestamp date;
 
 
     private int height;
@@ -24,9 +24,8 @@ public class Parametrs {
 
     private Users users;
 
-    public  Parametrs(long id, Date date, int height, int weight, int age, char gender, Users user){
+    public  Parametrs(long id,  int height, int weight, int age, char gender, Users user){
         this.id = id;
-        this.date =date;
         this.height= height;
         this.weight = weight;
         this.age = age;
@@ -44,14 +43,6 @@ public class Parametrs {
 
     public void setId(long id) {
         this.id = id;
-    }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
     }
 
     public int getAge() {
@@ -92,5 +83,13 @@ public class Parametrs {
 
     public void setUsers(Users users) {
         this.users = users;
+    }
+
+    public Timestamp getDate() {
+        return date;
+    }
+
+    public void setDate(Timestamp date) {
+        this.date = date;
     }
 }

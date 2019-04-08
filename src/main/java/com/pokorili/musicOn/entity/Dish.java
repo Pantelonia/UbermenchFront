@@ -2,46 +2,34 @@ package com.pokorili.musicOn.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import javax.persistence.*;
 
-@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
-@Entity
+
 public class Dish {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id", length = 6, nullable = false, updatable = false)
+
     private long id;
 
-    @Basic
-    @Column(name = "name", nullable = false, unique = true)
+
     private String name;
 
-    @Basic
-    @Column(name = "kkal")
+
     private float kkal;
 
-    @Basic
-    @Column(name = "protein")
+
     private float protein;
 
-    @Basic
-    @Column(name = "carbohydrates")
+
     private float carbohydrates;
 
-    @Basic
-    @Column(name = "fat")
+
     private float fat;
 
-    @Basic
-    @Column(name = "description")
+
     private String description;
 
-    @Basic
-    @Column(name = "type_dish")
+
     private String type_dish;
 
-    @ManyToOne(fetch = FetchType.LAZY, cascade = {CascadeType.MERGE, CascadeType.PERSIST})
-    @JoinColumn(name = "meal",  referencedColumnName = "id", nullable = false)
+
     private Meal meal;
 
     public Dish() {

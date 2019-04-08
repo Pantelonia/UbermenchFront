@@ -27,6 +27,9 @@ public class Users {
     public Users() {
 
     }
+    public Users(String login){
+        this.login = login;
+    }
 
     public Users(long id, String login, String password, String email) {
         this.id = id;
