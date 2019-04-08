@@ -56,4 +56,19 @@ public class UserService {
         }
         return visitor;
     }
+
+    public Visitor changeVisitorProperty(Long id, String property, String value) {
+        Visitor visitor;
+        Map<String, String> params = new HashMap<>();
+        params.put(property, value);
+        Gson gson = new Gson();
+        try {
+            String link = "http://localhost:8080/visitors" + "/" + id;
+            visitor = gson.fromJson(connectionService.sendRequest(link,"POST", params, null), Visitor.class);
+        } catch (IOException e) {
+            e.printStackTrace();
+            visitor = null;
+        }
+        return visitor;
+    }
 }

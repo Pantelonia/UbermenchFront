@@ -129,9 +129,4 @@ public class MainController {
             }
         }
     }
-
-    @GetMapping("/profile")
-    public String getProfilePage() {
-        return "profilePage";
-    }
 }
