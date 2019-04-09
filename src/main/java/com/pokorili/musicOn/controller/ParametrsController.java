@@ -29,8 +29,10 @@ public class ParametrsController {
     @PostMapping("/addParametrs")
     public  String changeParametrs(@ModelAttribute("newParam") Parametrs newParam, @SessionAttribute("user") Users user, Model model ){
 
+
+        newParam.setUsers(user);
+        newParam = parametrService.addParameters(newParam);
         model.addAttribute("parametrs", newParam);
-        parametrService.addParameters(newParam);
 
         return "profilePage";
     }

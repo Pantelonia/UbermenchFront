@@ -35,10 +35,13 @@ public class ParametrService {
             Users users = parametrs.getUsers();
             String link = "http://localhost:8080/parametrs/"+ users.getId();
             parametrs = gson.fromJson(connectionService.sendRequest(link,"POST", null, parametrs), Parametrs.class);
+            parametrs = getLast(users.getId());
+
         } catch (IOException e) {
             e.printStackTrace();
             parametrs = null;
         }
+
         return parametrs;
     }
 

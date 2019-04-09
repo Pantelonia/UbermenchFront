@@ -24,6 +24,8 @@
 <body>
 <%@include file="header.jsp"%>
 <%--@elvariable id="newParam" type="com.pokorili.musicOn.entity.Parametrs"--%>
+<h1><%= user.getId()%></h1>
+
 <form:form method="post" action="/addParametrs" modelAttribute="newParam">
     <form:input type="hidden" path="users" value ="<%=user%>"/>
     <label>

@@ -33,7 +33,8 @@
         <p>${infoMessage}</p>
     </div>
     <div class="userInfo">
-        <h1 class="nickname"><%=user.getLogin()%></h1>
+        <h1><%= user.getId()%></h1>
+        <h1 class="nickname"> <%=user.getLogin()%></h1>
         <p class="label">Your email:</p>
         <p class="email"><%=user.getEmail()%></p>
 
