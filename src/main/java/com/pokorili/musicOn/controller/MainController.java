@@ -76,6 +76,8 @@ public class MainController {
     }
 
     @PostMapping("/register")
+
+    //madel atttribute take users from form
     public String registerNewUser(@ModelAttribute("newUser") Users newUser, @SessionAttribute("user") Users user, Model model) {
         Users searchEmailVisitor = userService.getUserByEmail(newUser.getEmail());
         Users searchLoginVisitor = userService.getUserByLogin(newUser.getLogin());
@@ -97,6 +99,5 @@ public class MainController {
         }
     }
 
-    @GetMapping("/dish")
-    public String getDishPage(Model model){ return "dishPage";}
+
 }

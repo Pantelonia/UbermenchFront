@@ -70,7 +70,10 @@
             <a href="/logout">Logout</a>
         </div>
         <div class="inline-block">
-            <a href="/dish">My programm</a>
+            <a href="/MyProgramm">My programm</a>
+        </div>
+        <div class="inline-block">
+            <a href="/Programm">ProgrammStore</a>
         </div>
     </div>
     <%

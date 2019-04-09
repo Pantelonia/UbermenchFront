@@ -23,6 +23,7 @@ public class ProfileController {
     }
 
     @GetMapping("/profile")
+    // add model to put data to page of last parametrs
     public String getProfilePage(Model model, @SessionAttribute("user") Users users) {
         model.addAttribute("parametrs", parametrService.getLast(users.getId()));
 
