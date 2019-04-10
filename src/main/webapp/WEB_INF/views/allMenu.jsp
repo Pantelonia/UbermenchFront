@@ -1,4 +1,3 @@
-<%--@elvariable id="programm" type="com.pokorili.musicOn.entity.WeeklyDiet"--%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html;charset=UTF-8"%>
 <html>
@@ -34,19 +33,23 @@
         <p>${infoMessage}</p>
     </div>
 
-    <h1>Name: ${programm.name}</h1>
-    <h2>Description: ${programm.description}</h2>
-    <h3>Author: ${programm.author}</h3>
-    <div class="allMyProgrammDays">
-        <%--@elvariable id="programms" type="com.pokorili.musicOn.entity.WeeklyDiet[]"--%>
-        <%--@elvariable id="days" type="com.pokorili.musicOn.entity.DaillyMenu[]"--%>
-        <c:forEach items="${days}" var = "day">
+    <div class="allMyProgramm">
+        <%--@elvariable id="programms" type="com.pokorili.musicOn.entity.DaillyMenu[]"--%>
+        <c:forEach items="${userProgramms}" var = "userProgramm">
             <p>
-                <p>${day.day} </p>
+                <a href = "/Programm/${userProgramm.id}">${userProgramm.name} - ${userProgramm.author}</a>
 
             </p>
         </c:forEach>
     </div>
+
+    <div class="addProgramm">
+        <a class="changeButton" href="/chooseMyProgramm">Add Programm</a>
+
+    </div>
+
+
+
 
 
 </div>
