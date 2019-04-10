@@ -1,3 +1,4 @@
+<%--@elvariable id="programm" type="com.pokorili.musicOn.entity.WeeklyDiet"--%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html;charset=UTF-8"%>
 <html>
@@ -33,10 +34,9 @@
         <p>${infoMessage}</p>
     </div>
 
-    <%--@elvariable id="programms" type="com.pokorili.musicOn.entity.WeeklyDiet[]"--%>
-    <c:forEach items="${userProgramms}" var = "userProgramm">
-        <p>${userProgramm.name} - ${userProgramm.author}</p>
-    </c:forEach>
+    <h1>Name: ${programm.name}</h1>
+    <h2>Description: ${programm.description}</h2>
+    <h3>Author: ${programm.author}</h3>
 
 
 </div>

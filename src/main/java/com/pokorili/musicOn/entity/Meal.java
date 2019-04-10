@@ -14,7 +14,10 @@ public class Meal {
 
 
     @JsonIgnore
-    private Collection<Dish> dish;
+    private Collection<Meal> meals;
+
+    public Meal() {
+    }
 
     public Long getId() {
         return id;
@@ -25,12 +28,20 @@ public class Meal {
     }
 
 
-    public Collection<Dish> getDish() {
-        return dish;
+    public Collection<DaillyMenu> getBreakfasts() {
+        return breakfasts;
     }
 
-    public void setDish(Collection<Dish> dish) {
-        this.dish = dish;
+    public void setBreakfasts(Collection<DaillyMenu> breakfasts) {
+        this.breakfasts = breakfasts;
+    }
+
+    public Collection<Meal> getMeals() {
+        return meals;
+    }
+
+    public void setMeals(Collection<Meal> meals) {
+        this.meals = meals;
     }
 }
 
