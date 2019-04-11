@@ -26,4 +26,19 @@ public class DailyMenuService {
         return daillyMenus;
 
     }
+    public DaillyMenu getMenu(long id){
+        DaillyMenu menu = new DaillyMenu();
+        Gson gson = new Gson();
+        try {
+            String link = "http://localhost:8080/menu/"+ id;
+            menu = gson.fromJson(connectionService.sendRequest(link,"GET", null, null), DaillyMenu.class);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+            menu = null;
+        }
+
+        return menu;
+
+    }
 }

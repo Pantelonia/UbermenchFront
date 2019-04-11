@@ -36,7 +36,7 @@
     <div class="allMyProgramm">
         <%--@elvariable id="programms" type="com.pokorili.musicOn.entity.WeeklyDiet[]"--%>
         <c:forEach items="${userProgramms}" var = "userProgramm">
-            <p>
+            <p class="nickname">
                 <a href = "/Programm/${userProgramm.id}">${userProgramm.name} - ${userProgramm.author}</a>
 
             </p>

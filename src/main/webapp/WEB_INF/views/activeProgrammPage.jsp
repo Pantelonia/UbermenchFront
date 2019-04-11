@@ -45,12 +45,12 @@
         <%--@elvariable id="programms" type="com.pokorili.musicOn.entity.WeeklyDiet[]"--%>
         <%--@elvariable id="days" type="com.pokorili.musicOn.entity.DaillyMenu[]"--%>
         <c:forEach items="${days}" var="day">
-            <p>
-            <p style="padding: auto; margin: 30px">${day.day} </p>
-            <div class="addMeal">
-                <a class="changeButton" href="/addMeal/${day.id}">Add Meal</a>
+            <p style="padding: auto; margin: 30px">
+            <a href="/activeDay/${programm.id}/${day.id}" style="padding: auto; margin: 30px">${day.day} </a>
+            <%--<div class="addMeal">--%>
+                <%--<a class="changeButton" href="/addMeal/${day.id}">Add Meal</a>--%>
 
-            </div>
+            <%--</div>--%>
 
             </p>
         </c:forEach>
