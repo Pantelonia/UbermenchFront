@@ -7,6 +7,9 @@
 <head>
     <title>MusicOn</title>
     <meta charset="UTF-8"/>
+
+    <link href="webjars/bootstrap/3.3.6/css/bootstrap.min.css"
+          rel="stylesheet">
 </head>
 
 <body>
@@ -53,15 +56,25 @@
         <%--@elvariable id="dishes" type="com.pokorili.musicOn.entity.Dish[]"--%>
         <c:forEach items="${dishes}" var="dish">
 
-            <p style="padding: auto; margin: 30px">${dish.name} </p>
+            <h3><p style="padding: auto; margin: 30px">Name ${dish.name} </p></h3>
 
+            <p style="padding: auto; margin: 30px">description ${dish.description} </p>
 
+            <p style="padding: auto; margin: 30px">kkal ${dish.kkal} </p>
+
+            <p style="padding: auto; margin: 30px">protein ${dish.protein} </p>
+
+            <p style="padding: auto; margin: 30px">carbohydrates ${dish.carbohydrates} </p>
+
+            <p style="padding: auto; margin: 30px">fat ${dish.fat} </p>
+
+            <p style="padding: auto; margin: 30px">type_dish ${dish.type_dish} </p>
 
 
         </c:forEach>
     </div>
-    <%--<div class="addMeal">--%>
-        <%--<a class="changeButton" href="/addMeal/${daillyMenu.id}">Add Meal</a>--%>
+    <%--<div class="addDish">--%>
+    <%--<a class="changeButton" href="/addMeal/${daillyMenu.id}">Add Meal</a>--%>
 
     <%--</div>--%>
 

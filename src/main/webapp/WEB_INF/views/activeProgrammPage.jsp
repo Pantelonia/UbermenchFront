@@ -6,6 +6,8 @@
 <head>
     <title>MusicOn</title>
     <meta charset="UTF-8"/>
+    <link rel="stylesheet" href="/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css" />
+
 </head>
 
 <body>
@@ -38,15 +40,21 @@
         <p>${infoMessage}</p>
     </div>
 
-    <h1>Name: ${programm.name}</h1>
-    <h2>Description: ${programm.description}</h2>
-    <h3>Author: ${programm.author}</h3>
+    <div class="jumbotron">
+        <h1 >Programm name: ${programm.name}</h1>
+        <h2>Description: ${programm.description}</h2>
+        <h3>Author: ${programm.author}</h3>
+    </div>
+
+
+
     <div class="allMyProgrammDays">
         <%--@elvariable id="programms" type="com.pokorili.musicOn.entity.WeeklyDiet[]"--%>
         <%--@elvariable id="days" type="com.pokorili.musicOn.entity.DaillyMenu[]"--%>
         <c:forEach items="${days}" var="day">
             <p style="padding: auto; margin: 30px">
-            <a href="/activeDay/${programm.id}/${day.id}" style="padding: auto; margin: 30px">${day.day} </a>
+
+            <a class="" href="/activeDay/${programm.id}/${day.id}" style="padding: auto; margin: 30px">${day.day} </a>
             <%--<div class="addMeal">--%>
                 <%--<a class="changeButton" href="/addMeal/${day.id}">Add Meal</a>--%>
 

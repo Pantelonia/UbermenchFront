@@ -1,6 +1,7 @@
 package com.pokorili.musicOn.controller;
 
 import com.pokorili.musicOn.entity.Users;
+import com.pokorili.musicOn.service.ConnectionService;
 import com.pokorili.musicOn.service.ParametrService;
 import com.pokorili.musicOn.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,6 +17,9 @@ public class ProfileController {
     UserService userService;
     @Autowired
     ParametrService parametrService;
+    @Autowired
+    ConnectionService connectionService;
+
 
     @ModelAttribute("newUser")
     public Users createNewVisitor() {
@@ -79,11 +83,12 @@ public class ProfileController {
     }
 
     @PostMapping("/changePassword")
-    public String changePassword(@SessionAttribute("user")Users curUser, @ModelAttribute("newUser")Users newUser, Model model) {
+    public String changePassword(@SessionAttribute("user") Users curUser, @ModelAttribute("newUser") Users newUser, Model model) {
         if (curUser.getPassword().equals(newUser.getEmail())) {
             if (newUser.getLogin().equals(newUser.getPassword())) {
                 curUser.setPassword(newUser.getPassword());
                 userService.changeUserProperty(curUser.getId(), "password", newUser.getPassword());
+                connectionService.sendEmail(curUser.getEmail(), "Password change" ,"Your password was changed!\nYour new password is: " + curUser.getPassword());
                 model.addAttribute("infoMessage", "Password successfully changed!");
                 return "profilePage";
             } else {
