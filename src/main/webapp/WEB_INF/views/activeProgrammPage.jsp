@@ -1,6 +1,6 @@
 <%--@elvariable id="programm" type="com.pokorili.musicOn.entity.WeeklyDiet"--%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@page contentType="text/html;charset=UTF-8"%>
+<%@page contentType="text/html;charset=UTF-8" %>
 <html>
 
 <head>
@@ -9,22 +9,26 @@
 </head>
 
 <body>
-<%@include file="header.jsp"%>
+<%@include file="header.jsp" %>
 <style>
     .userInfo {
         margin: 30px;
     }
+
     .nickname {
         color: #41435b;
         margin: 20px;
     }
+
     .email {
         margin: 20px;
     }
+
     .changeButton {
         padding: 5px;
         border: 2px solid #41435b;
     }
+
     .info-block {
         color: #00b900;
     }
@@ -40,13 +44,19 @@
     <div class="allMyProgrammDays">
         <%--@elvariable id="programms" type="com.pokorili.musicOn.entity.WeeklyDiet[]"--%>
         <%--@elvariable id="days" type="com.pokorili.musicOn.entity.DaillyMenu[]"--%>
-        <c:forEach items="${days}" var = "day">
+        <c:forEach items="${days}" var="day">
             <p>
-                <p>${day.day} </p>
+            <p style="padding: auto; margin: 30px">${day.day} </p>
+            <div class="addMeal">
+                <a class="changeButton" href="/addMeal/${day.id}">Add Meal</a>
+
+            </div>
 
             </p>
         </c:forEach>
     </div>
+
+
 
 
 </div>

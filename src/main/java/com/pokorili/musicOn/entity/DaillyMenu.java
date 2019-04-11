@@ -9,7 +9,7 @@ public class DaillyMenu {
     private String day;
 
 
-    private Meal breakfast;
+
 
 
 
@@ -31,11 +31,4 @@ public class DaillyMenu {
         this.id = id;
     }
 
-    public Meal getBreakfast() {
-        return breakfast;
-    }
-
-    public void setBreakfast(Meal breakfast) {
-        this.breakfast = breakfast;
-    }
 }

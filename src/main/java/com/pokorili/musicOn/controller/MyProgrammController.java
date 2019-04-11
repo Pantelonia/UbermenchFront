@@ -1,10 +1,8 @@
 package com.pokorili.musicOn.controller;
 
-import com.pokorili.musicOn.entity.DaillyMenu;
-import com.pokorili.musicOn.entity.UserWeekInstance;
-import com.pokorili.musicOn.entity.Users;
-import com.pokorili.musicOn.entity.WeeklyDiet;
+import com.pokorili.musicOn.entity.*;
 import com.pokorili.musicOn.service.DailyMenuService;
+import com.pokorili.musicOn.service.MealService;
 import com.pokorili.musicOn.service.ProgrammService;
 import org.apache.jasper.tagplugins.jstl.core.If;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +20,8 @@ public class MyProgrammController{
     ProgrammService programmService;
     @Autowired
     DailyMenuService dailyMenuService;
+    @Autowired
+    MealService mealService;
 
 
 @GetMapping("/MyProgramm")
@@ -42,6 +42,12 @@ public class MyProgrammController{
     public  String getCurrentProgamms(@PathVariable long id, Model model){
     WeeklyDiet programm = programmService.getProgramm(id);
     DaillyMenu[] daillyMenus = dailyMenuService.getAllProgrammDay(programm.getId());
+
+//    for (DaillyMenu day  : daillyMenus ) {
+//        Meal[] meals = mealService.getAllDayMeal(day.getId());
+//        model.addAttribute("meal", meals);
+//    }
+
     model.addAttribute("days", daillyMenus);
     model.addAttribute("programm", programm);
     return "activeProgrammPage";
@@ -62,6 +68,7 @@ return "addUserProgrammPage";
     if (userWeekInstance == null ){
         WeeklyDiet programm = programmService.addUserProgramm(user.getId(), id);
         WeeklyDiet[] userProgramms = programmService.getAllUserProgramm(user.getId());
+
         model.addAttribute("userProgramms",userProgramms);
         return "allMyProgrammPage";
     }

@@ -1,48 +1,49 @@
 package com.pokorili.musicOn.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
-import java.util.Collection;
 
-public class Meal {
+
+
+public class Meal
+{
 
     private long id;
 
 
-    @JsonIgnore
-    private Collection<DaillyMenu> breakfasts;
+    private String name;
 
 
-    @JsonIgnore
-    private Collection<Meal> meals;
+    private DaillyMenu menu;
 
-    public Meal() {
+
+
+    public Meal(){
+
     }
 
-    public Long getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(long id) {
         this.id = id;
     }
 
-
-    public Collection<DaillyMenu> getBreakfasts() {
-        return breakfasts;
+    public String getName() {
+        return name;
     }
 
-    public void setBreakfasts(Collection<DaillyMenu> breakfasts) {
-        this.breakfasts = breakfasts;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public Collection<Meal> getMeals() {
-        return meals;
+    public DaillyMenu getMenu() {
+        return menu;
     }
 
-    public void setMeals(Collection<Meal> meals) {
-        this.meals = meals;
+    public void setMenu(DaillyMenu menu) {
+        this.menu = menu;
     }
+
+
 }
-
-
