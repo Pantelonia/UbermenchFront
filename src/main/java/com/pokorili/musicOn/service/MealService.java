@@ -60,6 +60,21 @@ public class MealService {
         return meals;
     }
 
+    public  Meal getMeal(long id){
+        Meal meal;
+        Gson gson = new Gson();
+        try {
+            String link = "http://localhost:8080/meal/" + id;
+            meal = gson.fromJson(connectionService.sendRequest(link,"GET", null, null), Meal.class);
+        } catch (IOException e) {
+            e.printStackTrace();
+            meal = null;
+        }
+
+        return meal;
+
+    }
+
 
 
 }

@@ -1,4 +1,4 @@
-<%--@elvariable id="daillyMenu" type="com.pokorili.musicOn.entity.DaillyMenu"--%>
+<%--@elvariable id="meal" type="com.pokorili.musicOn.entity.Meal"--%>
 <%--@elvariable id="programm" type="com.pokorili.musicOn.entity.WeeklyDiet"--%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html;charset=UTF-8" %>
@@ -27,8 +27,7 @@
     }
 
     .changeButton {
-        margin-top: 90px;
-        padding: auto;
+        padding: 5px;
         border: 2px solid #41435b;
     }
 
@@ -41,24 +40,30 @@
         <p>${infoMessage}</p>
     </div>
 
-    <h1>Name: ${programm.name}</h1>
-    <h2>Description: ${programm.description}</h2>
-    <h3>Author: ${programm.author}</h3>
-    <div class="allMyMealsDish">
-        <%--@elvariable id="meals" type="com.pokorili.musicOn.entity.Meal[]"--%>
-        <c:forEach items="${meals}" var="meal">
+    <div>
+        <h1>Name: ${programm.name}</h1>
+        <h2>Description: ${programm.description}</h2>
+        <h3>Author: ${programm.author}</h3>
+    </div>
 
-            <a href="/activeMeal/${programm.id}/${meal.id}/" style="padding: auto; margin: 30px">${meal.name} </a>
+    <div>Meal's name ${meal.name}</div>
+
+
+    <div class="allMyMealsDish">
+        <%--@elvariable id="dishes" type="com.pokorili.musicOn.entity.Dish[]"--%>
+        <c:forEach items="${dishes}" var="dish">
+
+            <p style="padding: auto; margin: 30px">${dish.name} </p>
 
 
 
 
         </c:forEach>
     </div>
-    <div class="addMeal">
-        <a class="changeButton" href="/addMeal/${daillyMenu.id}">Add Meal</a>
+    <%--<div class="addMeal">--%>
+        <%--<a class="changeButton" href="/addMeal/${daillyMenu.id}">Add Meal</a>--%>
 
-    </div>
+    <%--</div>--%>
 
 
 </div>
