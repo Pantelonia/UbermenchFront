@@ -13,22 +13,68 @@
 <body>
 <%@include file="header.jsp" %>
 <style>
-    .userInfo {
-        margin: 30px;
+    .mainContent {
+        margin-top: 20px;
     }
 
-    .nickname {
-        color: #41435b;
-        margin: 20px;
-    }
 
-    .email {
-        margin: 20px;
-    }
 
     .changeButton {
-        padding: 5px;
-        border: 2px solid #41435b;
+        color: white;
+        text-decoration: none;
+        padding: 12px 15px;
+        font-weight: 500;
+        border-radius: 10px;
+        background: #2e197b;
+        border: none;
+
+    }
+
+    .head {
+        background: #2e197b;
+        color: white;
+        text-align: center;
+        font-size: 22px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        font-weight: 500;
+        border-top-left-radius: 45px;
+        border-top-right-radius: 45px;
+    }
+
+    .left {
+        display: inline-block;
+        width: 50%;
+        float: left;
+    }
+
+    .right {
+        display: inline-block;
+        width: 49%;
+        float: left;
+    }
+
+    .inner {
+        margin: 0 20px;
+        border: 2px solid gainsboro;
+        border-radius: 45px;
+        text-align: center;
+
+    }
+
+    @media screen and (max-width: 1086px) {
+        .left, .right {
+            display: block;
+            width: 100%;
+            float: left;
+            margin-bottom: 30px;
+
+        }
+
+        .mainContent {
+
+            height: 100%;
+        }
     }
 
     .info-block {
@@ -40,29 +86,29 @@
         <p>${infoMessage}</p>
     </div>
 
-    <div class="jumbotron">
-        <h1 >Programm name: ${programm.name}</h1>
-        <h2>Description: ${programm.description}</h2>
-        <h3>Author: ${programm.author}</h3>
+    <div class="jumbotron " >
+        <h1 class="display-4" >Programm name: ${programm.name}</h1>
+        <h2 class="display-3">Description: ${programm.description}</h2>
+        <hr class="my-4">
+        <h3  class="lead">Author: ${programm.author}</h3>
+    </div>
+    <div class="inner">
+        <div class="head">Select Day's Menu</div>
+        <div class="allMyProgrammDays">
+            <%--@elvariable id="programms" type="com.pokorili.musicOn.entity.WeeklyDiet[]"--%>
+            <%--@elvariable id="days" type="com.pokorili.musicOn.entity.DaillyMenu[]"--%>
+            <c:forEach items="${days}" var="day">
+                <p style="padding: auto; margin: 30px">
+                    <a class="" href="/activeDay/${programm.id}/${day.id}" style="padding: auto; margin: 30px">${day.day} </a>
+                </p>
+            </c:forEach>
+        </div>
+
     </div>
 
 
 
-    <div class="allMyProgrammDays">
-        <%--@elvariable id="programms" type="com.pokorili.musicOn.entity.WeeklyDiet[]"--%>
-        <%--@elvariable id="days" type="com.pokorili.musicOn.entity.DaillyMenu[]"--%>
-        <c:forEach items="${days}" var="day">
-            <p style="padding: auto; margin: 30px">
 
-            <a class="" href="/activeDay/${programm.id}/${day.id}" style="padding: auto; margin: 30px">${day.day} </a>
-            <%--<div class="addMeal">--%>
-                <%--<a class="changeButton" href="/addMeal/${day.id}">Add Meal</a>--%>
-
-            <%--</div>--%>
-
-            </p>
-        </c:forEach>
-    </div>
 
 
 

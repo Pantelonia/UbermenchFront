@@ -1,5 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@page contentType="text/html;charset=UTF-8"%>
+<%@page contentType="text/html;charset=UTF-8" %>
 <html>
 
 <head>
@@ -8,22 +8,75 @@
 </head>
 
 <body>
-<%@include file="header.jsp"%>
+<%@include file="header.jsp" %>
 <style>
+    .mainContent {
+        margin-top: 20px;
+    }
+
     .userInfo {
-        margin: 30px;
+        margin: 30px 20px;
+
     }
-    .nickname {
-        color: #41435b;
-        margin: 20px;
-    }
-    .email {
-        margin: 20px;
-    }
+
     .changeButton {
-        padding: 5px;
-        border: 2px solid #41435b;
+        color: white;
+        text-decoration: none;
+        padding: 12px 15px;
+        font-weight: 500;
+        border-radius: 10px;
+        background: #2e197b;
+        border: none;
+
     }
+
+    .head {
+        background: #2e197b;
+        color: white;
+        text-align: center;
+        font-size: 22px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        font-weight: 500;
+        border-top-left-radius: 45px;
+        border-top-right-radius: 45px;
+    }
+
+    .left {
+        display: inline-block;
+        width: 50%;
+        float: left;
+    }
+
+    .right {
+        display: inline-block;
+        width: 49%;
+        float: left;
+    }
+
+    .inner {
+        margin: 0 20px;
+        border: 2px solid gainsboro;
+        border-radius: 45px;
+        text-align: center;
+
+    }
+
+    @media screen and (max-width: 1086px) {
+        .left, .right {
+            display: block;
+            width: 100%;
+            float: left;
+            margin-bottom: 30px;
+
+        }
+
+        .mainContent {
+
+            height: 100%;
+        }
+    }
+
     .info-block {
         color: #00b900;
     }
@@ -33,23 +86,24 @@
         <p>${infoMessage}</p>
     </div>
 
-    <div class="allMyProgramm">
+    <div class="allMyProgramm" align="center">
         <%--@elvariable id="programms" type="com.pokorili.musicOn.entity.DaillyMenu[]"--%>
-        <c:forEach items="${userProgramms}" var = "userProgramm">
-            <p>
-                <a href = "/Programm/${userProgramm.id}">${userProgramm.name} - ${userProgramm.author}</a>
+        <div class="inner">
+            <div class="head">Select Programme</div>
 
-            </p>
-        </c:forEach>
+            <c:forEach items="${userProgramms}" var="userProgramm">
+                <p>
+                    <a href="/Programm/${userProgramm.id}">${userProgramm.name} - ${userProgramm.author}</a>
+
+                </p>
+            </c:forEach>
+        </div>
+
+        <div class="addProgramm">
+            <a class="changeButton" href="/chooseMyProgramm">Add Programm</a>
+
+        </div>
     </div>
-
-    <div class="addProgramm">
-        <a class="changeButton" href="/chooseMyProgramm">Add Programm</a>
-
-    </div>
-
-
-
 
 
 </div>
