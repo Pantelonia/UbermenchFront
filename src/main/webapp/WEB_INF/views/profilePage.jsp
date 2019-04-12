@@ -47,7 +47,7 @@
         <h1>Пол: ${parametrs.gender} </h1>
         <h1>Рост:${parametrs.height}</h1>
         <h1>Вес:${parametrs.weight}</h1>
-        <h1>Дата фикирования:${parametrs.date}</h1>
+        <h1>Дата фиксирования:${parametrs.date}</h1>
         <a class="changeButton" href="/changeParametrs">Edit parametrs</a>
 
     </div>

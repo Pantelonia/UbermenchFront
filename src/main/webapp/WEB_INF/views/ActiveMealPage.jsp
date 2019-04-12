@@ -73,10 +73,10 @@
 
         </c:forEach>
     </div>
-    <%--<div class="addDish">--%>
-    <%--<a class="changeButton" href="/addMeal/${daillyMenu.id}">Add Meal</a>--%>
+    <div class="addDish">
+    <a class="changeButton" href="/chooseMyDish/${meal.id}">Add Dish</a>
 
-    <%--</div>--%>
+    </div>
 
 
 </div>

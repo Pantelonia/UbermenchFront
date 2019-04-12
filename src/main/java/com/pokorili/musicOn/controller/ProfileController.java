@@ -51,6 +51,8 @@ public class ProfileController {
             curUser.setEmail(newUser.getEmail());
             userService.changeUserProperty(curUser.getId(), "email", newUser.getEmail());
             model.addAttribute("infoMessage", "Email successfully changed!");
+            connectionService.sendEmail(curUser.getEmail(), "Email change" ,"This email was chosen as a profile email of " + curUser.getLogin() + " on Ubermensch");
+
             return "profilePage";
         }
     }
@@ -72,6 +74,8 @@ public class ProfileController {
             curUser.setLogin(newUser.getLogin());
             userService.changeUserProperty(curUser.getId(), "login", newUser.getLogin());
             model.addAttribute("infoMessage", "Login successfully changed!");
+            connectionService.sendEmail(curUser.getEmail(), "Nickname Change" ,"Your nickname was changed!\nYour new nickname is: " + curUser.getLogin());
+
             return "profilePage";
         }
     }

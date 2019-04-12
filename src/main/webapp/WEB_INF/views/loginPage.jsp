@@ -42,6 +42,9 @@
             <p class="red">${errMessage}</p>
         </div>
         <div class="inputField">
+            <a href="/resetPassword">Reset Password</a>
+        </div>
+        <div class="inputField">
             <input type="submit" value="Login">
         </div>
     </form:form>
